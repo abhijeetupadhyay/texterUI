@@ -1,13 +1,207 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --grad-1: #6366f1;
+  --grad-2: #a855f7;
+  --grad-3: #ec4899;
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.25);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+/* 🌈 App Background */
+.app-bg {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--grad-1),
+    var(--grad-2),
+    var(--grad-3)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* 🧊 Glass Card (Main + Modal Shared Style) */
+.glass-card,
+.modal {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  color: white;
+}
+
+/* 🪟 Main Card */
+.glass-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 28px;
+}
+
+/* 📦 Sections */
+.section {
+  margin-bottom: 24px;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* ✏️ Inputs */
+.input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.22);
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.textarea {
+  resize: none;
+}
+
+/* 🔘 Buttons */
+.btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  border: none;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.primary {
+  background: linear-gradient(to right, var(--grad-1), #4f46e5);
+}
+
+.secondary {
+  background: linear-gradient(to right, var(--grad-3), #db2777);
+}
+
+.success {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+}
+
+.danger {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+}
+
+/* 🌟 Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.35),
+    rgba(168, 85, 247, 0.35),
+    rgba(236, 72, 153, 0.35)
+  );
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* 💎 Modal */
+.modal {
+  width: 90%;
+  max-width: 420px;
+  padding: 26px;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 2px rgba(255, 255, 255, 0.15);
+  animation: pop 0.25s ease;
+}
+
+/* Modal Animation */
+@keyframes pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  word-break: break-all;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
 }
